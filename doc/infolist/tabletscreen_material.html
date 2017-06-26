@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ぷらっとフォーム+ fot Tablet</title>
+
+    <!-- css読み込み -->
+    <link href="tabletstyle.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!--MaterialLightの読み込み-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_orange-orange.min.css" />
+    <script>
+        jQuery(document).ready(function($) {
+            console.log("確認");
+            $('a[href=#]').click(function() {
+                $(isHtmlScrollable ? 'html' : 'body').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body role="document">
+    <!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">ぷらっとフォーム+ fot Tablet</span>
+            </div>
+        </header>
+
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">広告一覧</span>
+            <nav class="mdl-navigation" id="link">
+                <section>
+                </section>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <!-- Your content goes here -->
+                    <section id="card">
+                    </section>
+                    <div class="mdl-grid">
+                        <div id="youtube" class='mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet'>
+                            <SCRIPT>
+                                jQuery('iframe.sample').iframeAutoHeight();
+                            </SCRIPT>
+                        </div>
+                    </div>
+                </div>
+                <div id="liketoast" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Colored FAB button with ripple -->
+    <button onclick="reload()" id="button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+  <i id="reload" class="pos material-icons fa fa-refresh">refresh</i>
+</button>
+
+
+    <script type="text/javascript " charset="UTF-8 ">
+        function doAction(strValue, youtube) {
+            var base;
+            var obj;
+
+            base = document.getElementById(strValue);
+            base.innerHTML = "";
+
+            // IFRAME 作成
+            obj = document.createElement("iframe");
+            // IFRAME の見栄え属性をセット
+            obj.setAttribute("frameBorder", "0");
+            obj.setAttribute("scrolling", "no");
+            obj.setAttribute("allowfullscreen", "1");
+
+            // IFRAME の配置属性をセット
+            obj.style.position = "relative";
+            obj.style.width = "480px";
+            obj.style.height = "360px";
+
+            // IFRAME の内容をセット
+            obj.src = 'https://www.youtube.com/embed/' + youtube + '?autoplay=1';
+
+            // IFRAME を実装
+            base.appendChild(obj);
+            console.log("変更された動画情報");
+            console.log(obj.src);
+        }
+
+        function reload() {
+            window.location.reload();
+        }
+
+
+        function add(data) { //0広告名・1説明・2画面位置・3動画ID・4いいね数
+            //カードパネル追加
+            var section_element = document.createElement("section");
+            var thumnail = "http://img.youtube.com/vi/" + data[3] + "/hqdefault.jpg";
+            var videourl = "https://www.youtube.com/watch?v=" + data[3];
+            var html =
+                "<div id='" + data[3] + "'class='mdl-cell mdl-cell--10-col mdl-cell--14-col-tablet demo-card-wide mdl-card mdl-shadow--2dp'>" +
+                "<div class='mdl-card__title' style='background: url(http://img.youtube.com/vi/" + data[3] + "/hqdefault.jpg) center / cover'>" +
+                "<h2 class='mdl-card__title-text'>" + data[0] + "</h2>" +
+                "</div>" +
+                "<div class='mdl-card__supporting-text'>" + data[1] + "</div>" +
+                "<div class='mdl-card__actions mdl-card--border'>" +
+                "<button class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab' onClick='like(" + '"' +
+                data[3] + '"' + ");'>" +
+                "<i class='material-icons'>star</i>" +
+                "</button>" +
+                "<span id='" + data[3] + "_like" + "'" + "class='mdl-badge' data-badge='" + data[4] + "'>いいね</span>" +
+                "<a class='jump mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onClick='doAction" +
+                '("youtube", ' + '"' + data[3] + '"' + ");'>Youtubeで見る</a>" +
+                "</div>" +
+                "</div>";
+
+            console.log(html);
+            section_element.innerHTML = html;
+            var parent_object = document.getElementById("card");
+            parent_object.attr = data[3];
+            parent_object.appendChild(section_element);
+            //ジャンプリンク追加
+            //<a class="mdl-navigation__link " href="">Link</a>
+            var div_element = document.createElement("div");
+            html = "<a class='mdl-navigation__link mdl-js-ripple-effect' href='#" + data[3] + "'>" + data[0] + "</a>";
+            div_element.innerHTML = html;
+            parent_object = document.getElementById("link");
+            parent_object.appendChild(div_element);
+        }
+
+        function like(youtubeid) {
+            var url = "https://script.google.com/macros/s/AKfycbxikZ8c_S7ZHdERb4KuKvIBryF6D2oee89yrgN-rTsVl-t_YA8/exec?" + "id=" + youtubeid + "&like=1";
+            // 広告データ検索を実行
+            $.getJSON(url, function(data) {
+                // 中身が空でなければ、その値のうち、広告タイトルを[動画情報]欄に反映
+                console.log(data); //JSONの中身確認用
+                var result;
+                //var ulObj = $("#card");
+                var notification = document.querySelector('#liketoast');
+                if ((data) && (data.AdData != null)) { //dataが来てて、かつ広告データがnullじゃない時
+                    result = data.AdData[0].Like;
+                    //受信完了時の処理
+
+                    notification.MaterialSnackbar.showSnackbar({
+                        message: 'いいね!しました'
+                    });
+                    var tag = youtubeid + "_like";
+                    var testTarget = document.getElementById(tag);
+                    testTarget.setAttribute('data-badge', result);
+                    // 中身が空の場合は、エラーメッセージを反映
+                } else {
+                    notification.MaterialSnackbar.showSnackbar({
+                        message: 'いいねに失敗しました。時間を置いてからもう一度お試しください。'
+                    });
+                }
+
+            })
+        }
+
+
+        // 広告データ検索を実行
+        $.getJSON('https://script.google.com/macros/s/AKfycbxikZ8c_S7ZHdERb4KuKvIBryF6D2oee89yrgN-rTsVl-t_YA8/exec?callback=?', function(data) {
+            // 中身が空でなければ、その値のうち、広告タイトルを[動画情報]欄に反映
+            console.log(data); //JSONの中身確認用
+            //var ulObj = $("#card");
+            if ((data) && (data.AdData != null)) { //dataが来てて、かつ広告データがnullじゃない時
+                for (var i = 0; i < data.AdData.length; i++) {
+                    var result = new Array(3);
+                    result[0] = data.AdData[i].EventTitle; //広告データ構造体
+                    result[1] = data.AdData[i].EventDescription;
+                    result[2] = data.AdData[i].ScreenPosition;
+                    result[3] = data.AdData[i].VideoId;
+                    result[4] = data.AdData[i].Like;
+                    add(result);
+                }
+                // 中身が空の場合は、エラーメッセージを反映
+            } else {
+                var result = ['現在投稿されている広告はありません。', "", ""];
+                add(result);
+            }
+        });
+    </script>
+</body>
+
+</html>

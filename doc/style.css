@@ -1,0 +1,75 @@
+#wrap {
+    width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+#B1 {
+    width: 200px;
+    height: 855px;
+    float: left;
+    background-color: black;
+    color: ghostwhite;
+}
+
+#B2 {
+    width: 1520px;
+    height: 855px;
+    float: left;
+    background-color: black;
+}
+
+#B3 {
+    width: 200px;
+    height: 855px;
+    float: left;
+    background-color: black;
+    color: ghostwhite;
+}
+
+#B4 {
+    width: 1920px;
+    height: 100px;
+    float: left;
+    padding-top: 40px;
+    text-align: center;
+    font-size: 50pt;
+    color: ghostwhite;
+}
+
+#B5 {
+    width: 1920px;
+    height: 125px;
+    float: left;
+    padding-top: 5px;
+    background-color: black;
+    font-size: 32pt;
+    color: ghostwhite;
+}
+
+#debug {
+    float: left;
+}
+
+.imgL {
+    padding-left: 50px;
+    padding-top: 110px;
+}
+
+.imgR {
+    padding-left: 50px;
+    padding-top: 215px;
+}
+
+#likecount {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 40pt;
+    float: left;
+    background-color: black;
+    color: darkorange;
+}
