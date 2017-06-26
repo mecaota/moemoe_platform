@@ -1,5 +1,6 @@
 # moemoe_platform
 もえもえプラットフォーム
+
 | ページの種類 | URL |
 | --- | --- |
 | ディスプレイクライアント1 | https://moemoe2016.github.io/moemoe_platform/index1 |
@@ -10,4 +11,4 @@
 | ディスプレイクライアント6 | https://moemoe2016.github.io/moemoe_platform/index6 |
 | ディスプレイクライアント7 | https://moemoe2016.github.io/moemoe_platform/index7 |
 | ディスプレイクライアント8 | https://moemoe2016.github.io/moemoe_platform/index8 |
-| 広告一覧 | https://moemoe2016.github.io/moemoe_platform/info |
+| 広告一覧ページ | https://moemoe2016.github.io/moemoe_platform/info |
