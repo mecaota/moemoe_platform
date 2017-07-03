@@ -1,7 +1,9 @@
 function getUrl() {
   var basedurl = 'https://docs.google.com/spreadsheets/d/';
   var paramurl = '/pubhtml?gid=52704471&single=true';
-  return basedurl + getId() + paramurl;
+  var result = basedurl + getId() + paramurl;
+  Logger.log(result);
+  return result;
 }
 
 /////スプレッドシートサイド/////
@@ -267,15 +269,6 @@ function getYoutube(yurl){
 
 
 /////Youtubeサイド/////
-//デバッグ用関数
-function debug(){
-  var videoid = "https://www.youtube.com/watch?v=-TXjcVP7gQM";
-  videoid = getYoutube(videoid);
-  Logger.log(videoid);
-  //listInsert(videoid ,selectStage(3));
-  //listDelete(videoid ,selectStage(3));
-}
-
 function listInsert(videoid, listname){
   var details = {
     videoId: videoid,
