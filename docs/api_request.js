@@ -10,6 +10,8 @@ var detail = '広告詳細';
 var ListPeriod = 0;
 var currentIndex = 0;
 var like = 0;
+var apiurl = 'https://script.google.com/macros/s/AKfycbyfOPAZmOBQShbylnyrh4nv84KMSH-d_CrKbEO3VG813gQ5HqY/exec?callback=?';
+//listId = (ようつべ再生リストID);
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -34,7 +36,7 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
     player.loadPlaylist({
-        list: 'PLRrQoYa3Zwevr6NGjV2n559bq18DinU7J',
+        list: listId,
         listType: 'playlist',
         index: '0'
     });
@@ -56,7 +58,7 @@ function onPlayerError(event) {
 function chainsaw() {
     if (player.getPlayerState() == 1) {
         litlat = player.getVideoUrl().split("=");
-        $.getJSON('https://script.google.com/macros/s/AKfycbyfOPAZmOBQShbylnyrh4nv84KMSH-d_CrKbEO3VG813gQ5HqY/exec?callback=?', {
+        $.getJSON(apiurl, {
             id: litlat[litlat.length - 1]
         })
 
