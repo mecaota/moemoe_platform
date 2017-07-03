@@ -213,7 +213,7 @@ function getTitle(target, sh){
 //期間判定関数
 function setSchedule(){
   var sheetname = "フォームの回答 2";
-  var id = "";
+  var id = getId();
   var ss = SpreadsheetApp.openById(id);
   var sh = ss.getSheetByName(sheetname);
   
